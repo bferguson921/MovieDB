@@ -1,6 +1,5 @@
 package com.example.moviedb.factory
 
-import android.graphics.Movie
 import com.example.moviedb.model.PopularResponse
 import retrofit2.Call
 import retrofit2.Retrofit
