@@ -1,7 +1,11 @@
 package com.example.moviedb.factory
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.example.moviedb.model.*
 import com.example.moviedb.util.Logger
+import okhttp3.Cache
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -46,5 +50,15 @@ class MovieFactory {
     fun searchMovie(movie: String) : Call<SearchResponse> {
         Logger.debug("movie search")
         return movieService.searchForMovie(API_KEY, movie)
+    }
+
+
+    fun hasNetwork(context: Context): Boolean? {
+        var isConnected: Boolean? = false // Initial Value
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        if (activeNetwork != null && activeNetwork.isConnected)
+            isConnected = true
+        return isConnected
     }
 }
