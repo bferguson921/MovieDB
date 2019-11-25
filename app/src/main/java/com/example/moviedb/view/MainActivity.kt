@@ -4,6 +4,7 @@ import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.moviedb.R
 import com.example.moviedb.adapter.MovieAdapter
@@ -22,13 +23,20 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieAdapter.MovieA
 
     private lateinit var images: Images
     private lateinit var genres: List<Genre>
+    private lateinit var search : Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        search = findViewById(R.id.searchButton)
+
         presenter.setImageConfig()
         presenter.setGenres()
+
+        search.setOnClickListener{
+            presenter.searchForMovie(searchBar.text.toString())
+        }
 
         presenter.getPopularMovies(page)
     }
@@ -36,7 +44,6 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieAdapter.MovieA
     override fun displayMovies(movies: List<Result>) {
         movieListView.adapter = MovieAdapter(movies, genres, this, images, this)
         movieListView.layoutManager = LinearLayoutManager(this)
-        Logger.debug(movies.toString() + genres.toString())
     }
 
     override fun getImages(images: Images) {
@@ -45,6 +52,11 @@ class MainActivity : AppCompatActivity(), MainContract.View, MovieAdapter.MovieA
 
     override fun getGenres(genres: List<Genre>) {
         this.genres = genres
+    }
+
+    override fun getSearchedMovie(movies: List<Result>) {
+        movieListView.adapter = MovieAdapter(movies, genres, this, images, this)
+        movieListView.layoutManager = LinearLayoutManager(this)
     }
 
 

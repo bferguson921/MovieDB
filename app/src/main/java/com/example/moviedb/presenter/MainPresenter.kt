@@ -67,4 +67,22 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
 
     }
 
+    override fun searchForMovie(movie: String) {
+        movieFactory.searchMovie(movie).enqueue(object : Callback<SearchResponse> {
+            override fun onFailure(call: Call<SearchResponse>, t: Throwable) {
+                Logger.error(t)
+            }
+
+            override fun onResponse(
+                call: Call<SearchResponse>,
+                response: Response<SearchResponse>
+            ) {
+                response.body()?.let {
+                    view.getSearchedMovie(it.results)
+                }
+            }
+
+        })
+    }
+
 }

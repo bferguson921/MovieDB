@@ -32,7 +32,7 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         Logger.debug(url)
 
         Glide.with(this).load(url).into(iconDisplay)
-
+        
         titleDisplay.text = movie.title
         genreDisplay.text = genre
         popularityDisplay.text = movie.popularity.toString()
