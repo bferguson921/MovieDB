@@ -75,7 +75,6 @@ class MovieAdapter(private val movies: List<Result>,
             movieItem.setOnClickListener{
                 Logger.debug("Movie clicked!")
                 delegator.getMovieDetails(movies[position].id, stringBuilder.toString())
-
             }
         }
     }

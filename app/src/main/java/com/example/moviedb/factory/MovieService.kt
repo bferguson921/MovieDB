@@ -1,9 +1,6 @@
 package com.example.moviedb.factory
 
-import com.example.moviedb.model.ConfigurationResponse
-import com.example.moviedb.model.GenreResponse
-import com.example.moviedb.model.MovieResponse
-import com.example.moviedb.model.PopularResponse
+import com.example.moviedb.model.*
 import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
@@ -21,4 +18,7 @@ interface MovieService {
 
     @GET("configuration")
     fun getConfiguration(@Query("api_key") apiKey: String) : Call<ConfigurationResponse>
+
+    @GET("/search/movie")
+    fun searchForMovie(@Query("api_key") apiKey: String, @Query("query")movie: String) : Call<SearchResponse>
 }

@@ -4,4 +4,6 @@
     <string name="forward_arrow">forward arrow</string>
     <string name="movie_icon">movie icon</string>
     <string name="movie_thumbnail">movie thumbnail</string>
+    <string name="enter_movie">Enter Movie...</string>
+    <string name="search_button">search button</string>
 </resources>
