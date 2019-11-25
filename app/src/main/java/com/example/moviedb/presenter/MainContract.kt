@@ -8,13 +8,14 @@ import com.example.moviedb.model.Result
 interface MainContract {
 
     interface Presenter{
-        fun getMovies(page: Int)
-        fun getConfig()
-        fun getGenres() : List<Genre>
+        fun getPopularMovies(page: Int)
+        fun setImageConfig()
+        fun setGenres()
     }
 
     interface View{
-        fun displayMovies(movies: List<Result>, genres: List<Genre>)
+        fun displayMovies(movies: List<Result>)
         fun getImages(images: Images)
+        fun getGenres(genres: List<Genre>)
     }
 }
