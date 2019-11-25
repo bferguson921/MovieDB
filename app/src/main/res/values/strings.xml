@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">MovieDB</string>
+    <string name="back_arrow">back arrow</string>
+    <string name="forward_arrow">forward arrow</string>
+    <string name="movie_icon">movie icon</string>
+    <string name="movie_thumbnail">movie thumbnail</string>
 </resources>

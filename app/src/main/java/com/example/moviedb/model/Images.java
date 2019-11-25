@@ -1,11 +1,16 @@
 
 package com.example.moviedb.model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Images {
+import kotlinx.android.parcel.Parcelize;
+
+public class Images implements Parcelable{
 
     @SerializedName("base_url")
     @Expose
@@ -28,6 +33,28 @@ public class Images {
     @SerializedName("still_sizes")
     @Expose
     private List<String> stillSizes = null;
+
+    public Images(Parcel in) {
+        baseUrl = in.readString();
+        secureBaseUrl = in.readString();
+        backdropSizes = in.createStringArrayList();
+        logoSizes = in.createStringArrayList();
+        posterSizes = in.createStringArrayList();
+        profileSizes = in.createStringArrayList();
+        stillSizes = in.createStringArrayList();
+    }
+
+    public static final Parcelable.Creator<Images> CREATOR = new Parcelable.Creator<Images>() {
+        @Override
+        public Images createFromParcel(Parcel parcel) {
+            return new Images(parcel);
+        }
+
+        @Override
+        public Images[] newArray(int size) {
+            return new Images[size];
+        }
+    };
 
     public String getBaseUrl() {
         return baseUrl;
@@ -85,4 +112,19 @@ public class Images {
         this.stillSizes = stillSizes;
     }
 
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(baseUrl);
+        parcel.writeString(secureBaseUrl);
+        parcel.writeStringList(backdropSizes);
+        parcel.writeStringList(logoSizes);
+        parcel.writeStringList(posterSizes);
+        parcel.writeStringList(profileSizes);
+        parcel.writeStringList(stillSizes);
+    }
 }

@@ -5,7 +5,9 @@ import java.util.List;
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
-public class Result {
+import kotlinx.android.parcel.Parcelize;
+
+public class Result  {
 
     @SerializedName("popularity")
     @Expose

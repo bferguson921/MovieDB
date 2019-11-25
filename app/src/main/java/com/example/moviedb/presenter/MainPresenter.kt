@@ -1,17 +1,15 @@
 package com.example.moviedb.presenter
 
-import android.util.Log
 import com.example.moviedb.factory.MovieFactory
-import com.example.moviedb.model.Genre
+import com.example.moviedb.model.ConfigurationResponse
 import com.example.moviedb.model.GenreResponse
 import com.example.moviedb.model.PopularResponse
-import com.example.moviedb.model.Result
 import com.example.moviedb.util.Logger
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class Presenter(private val view: Contract.View) : Contract.Presenter {
+class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
 
     private val movieFactory = MovieFactory()
 
@@ -46,9 +44,26 @@ class Presenter(private val view: Contract.View) : Contract.Presenter {
 
                 }
             }
-
         })
 
+    }
+
+    override fun getConfig() {
+        movieFactory.getConfiguration().enqueue(object : Callback<ConfigurationResponse> {
+            override fun onFailure(call: Call<ConfigurationResponse>, t: Throwable) {
+                Logger.error(t)
+            }
+
+            override fun onResponse(
+                call: Call<ConfigurationResponse>,
+                response: Response<ConfigurationResponse>
+            ) {
+                response.body()?.let {
+                    view.getImages(it.images)
+                }
+            }
+
+        })
     }
 
 }
