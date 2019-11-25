@@ -25,10 +25,8 @@ class MovieAdapter(private val movies: List<Result>,
                    private val delegator: MovieAdapterDelegate,
                    private val image: Images,
                    private  val context: Context) : RecyclerView.Adapter<MovieAdapter.CustomViewHolder>(){
-    private val movieFactory = MovieFactory()
 
     interface MovieAdapterDelegate {
-        //fun getDetails(movie: MovieResponse)
         fun getMovieDetails(movieId: Int, genre: String)
     }
     class CustomViewHolder(view: View) : RecyclerView.ViewHolder(view){
