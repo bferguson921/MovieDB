@@ -11,11 +11,13 @@ interface MainContract {
         fun getPopularMovies(page: Int)
         fun setImageConfig()
         fun setGenres()
+        fun searchForMovie(movie: String)
     }
 
     interface View{
         fun displayMovies(movies: List<Result>)
         fun getImages(images: Images)
         fun getGenres(genres: List<Genre>)
+        fun displaySearch(movies: List<Result>)
     }
 }

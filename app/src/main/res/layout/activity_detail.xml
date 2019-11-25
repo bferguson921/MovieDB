@@ -10,18 +10,23 @@
     <ImageView
         android:id="@+id/iconDisplay"
         android:layout_width="0dp"
-        android:layout_height="92dp"
-        android:scaleType="centerCrop"
+        android:layout_height="0dp"
+        android:scaleType="fitCenter"
         android:contentDescription="@string/movie_icon"
         app:layout_constraintHorizontal_weight="0.2"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/overviewDisplay"
         app:layout_constraintEnd_toStartOf="@+id/titleDisplay"/>
 
     <TextView
         android:id="@+id/titleDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
         app:layout_constraintHorizontal_weight="0.8"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
@@ -31,6 +36,7 @@
         android:id="@+id/genreDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
         app:layout_constraintTop_toBottomOf="@+id/titleDisplay"
         app:layout_constraintEnd_toEndOf="parent" />
@@ -40,6 +46,7 @@
         android:id="@+id/popularityDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
         app:layout_constraintTop_toBottomOf="@+id/genreDisplay"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -48,6 +55,7 @@
         android:id="@+id/releaseYearDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
         app:layout_constraintTop_toBottomOf="@+id/popularityDisplay"
         app:layout_constraintEnd_toEndOf="parent"/>
@@ -55,23 +63,29 @@
     <TextView
         android:id="@+id/overviewDisplay"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        app:layout_constraintStart_toEndOf="@+id/iconDisplay"
-        app:layout_constraintTop_toBottomOf="@+id/releaseYearDisplay"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
+        android:textColor="@color/colorBlack"
+        android:textSize="24sp"
+        app:layout_constraintTop_toBottomOf="@+id/linkDisplay"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/runtimeDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
-        app:layout_constraintTop_toBottomOf="@+id/overviewDisplay"
+        app:layout_constraintTop_toBottomOf="@+id/releaseYearDisplay"
         app:layout_constraintEnd_toEndOf="parent"/>
 
     <TextView
         android:id="@+id/linkDisplay"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/iconDisplay"
         app:layout_constraintTop_toBottomOf="@+id/runtimeDisplay"
         app:layout_constraintEnd_toEndOf="parent"/>

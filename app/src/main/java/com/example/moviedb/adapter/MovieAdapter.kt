@@ -65,17 +65,20 @@ class MovieAdapter(private val movies: List<Result>,
 
             stringBuilder.deleteCharAt(stringBuilder.lastIndex)
 
+            val movieGenres = "Genres:\n$stringBuilder\n"
+            val popularity =  "Popularity: ${movies[position].popularity}"
+            val release = "Release Date: ${movies[position].releaseDate}"
+
             Glide.with(context).load(url).into(thumbnail)
 
             movieTitle.text = movies[position].originalTitle
-            genreTitle.text = stringBuilder.toString()
-            popularityScore.text = movies[position].popularity.toString()
-            releaseYear.text = movies[position].releaseDate
+            genreTitle.text = movieGenres
+            popularityScore.text = popularity
+            releaseYear.text = release
 
             movieItem.setOnClickListener{
                 Logger.debug("Movie clicked!")
                 delegator.getMovieDetails(movies[position].id, stringBuilder.toString())
-
             }
         }
     }

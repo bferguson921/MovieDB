@@ -1,9 +1,7 @@
 package com.example.moviedb.factory
 
-import com.example.moviedb.model.ConfigurationResponse
-import com.example.moviedb.model.GenreResponse
-import com.example.moviedb.model.MovieResponse
-import com.example.moviedb.model.PopularResponse
+import com.example.moviedb.model.*
+import com.example.moviedb.util.Logger
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,5 +41,10 @@ class MovieFactory {
 
     fun getConfiguration() : Call<ConfigurationResponse> {
         return movieService.getConfiguration(API_KEY)
+    }
+
+    fun searchMovie(movie: String) : Call<SearchResponse> {
+        Logger.debug("movie search")
+        return movieService.searchForMovie(API_KEY, movie)
     }
 }
