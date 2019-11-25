@@ -32,13 +32,19 @@ class DetailActivity : AppCompatActivity(), DetailContract.View {
         Logger.debug(url)
 
         Glide.with(this).load(url).into(iconDisplay)
-        
-        titleDisplay.text = movie.title
-        genreDisplay.text = genre
-        popularityDisplay.text = movie.popularity.toString()
-        releaseYearDisplay.text = movie.releaseDate
+        val genresToShow = "Genres:\n${genre}\n"
+        val popularity = "Popularity: ${movie.popularity}"
+        val release = "Release Date: ${movie.releaseDate}"
+        val runtime = "Runtime: ${movie.runtime} mins"
+        val link = "Homepage:\n${movie.homepage}"
+
+        titleDisplay.text = movie.originalTitle
+        genreDisplay.text = genresToShow
+        popularityDisplay.text = popularity
+        releaseYearDisplay.text = release
+        runtimeDisplay.text = runtime
+        linkDisplay.text = link
         overviewDisplay.text = movie.overview
-        runtimeDisplay.text = movie.runtime.toString()
-        linkDisplay.text = movie.homepage.toString()
+
     }
 }

@@ -32,7 +32,6 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
     }
 
     override fun setImageConfig() {
-        lateinit var images: Images
         movieFactory.getConfiguration().enqueue(object : Callback<ConfigurationResponse> {
             override fun onFailure(call: Call<ConfigurationResponse>, t: Throwable) {
                 Logger.error(t)
@@ -78,7 +77,7 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
                 response: Response<SearchResponse>
             ) {
                 response.body()?.let {
-                    view.getSearchedMovie(it.results)
+                    view.displaySearch(it.results)
                 }
             }
 

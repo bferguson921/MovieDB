@@ -21,6 +21,10 @@
         android:id="@+id/movieTitleView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/colorBlack"
+        android:textSize="16sp"
+        android:layout_marginStart="16dp"
         app:layout_constraintHorizontal_weight="0.8"
         app:layout_constraintStart_toEndOf="@+id/movieThumbnail"
         app:layout_constraintTop_toTopOf="parent"
@@ -30,6 +34,8 @@
         android:id="@+id/genreView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/colorGreyLight"
         app:layout_constraintTop_toBottomOf="@+id/movieTitleView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/movieThumbnail"/>
@@ -38,6 +44,8 @@
         android:id="@+id/popularityScoreView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/colorGreyLight"
         app:layout_constraintTop_toBottomOf="@+id/genreView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/movieThumbnail"/>
@@ -46,6 +54,8 @@
         android:id="@+id/releaseYearView"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:textColor="@color/colorGreyLight"
         app:layout_constraintTop_toBottomOf="@+id/popularityScoreView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/movieThumbnail"/>

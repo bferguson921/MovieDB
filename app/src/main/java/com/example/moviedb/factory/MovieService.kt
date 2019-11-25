@@ -19,6 +19,6 @@ interface MovieService {
     @GET("configuration")
     fun getConfiguration(@Query("api_key") apiKey: String) : Call<ConfigurationResponse>
 
-    @GET("/search/movie")
+    @GET("search/movie")
     fun searchForMovie(@Query("api_key") apiKey: String, @Query("query")movie: String) : Call<SearchResponse>
 }

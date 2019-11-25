@@ -1,6 +1,7 @@
 package com.example.moviedb.factory
 
 import com.example.moviedb.model.*
+import com.example.moviedb.util.Logger
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -43,6 +44,7 @@ class MovieFactory {
     }
 
     fun searchMovie(movie: String) : Call<SearchResponse> {
+        Logger.debug("movie search")
         return movieService.searchForMovie(API_KEY, movie)
     }
 }

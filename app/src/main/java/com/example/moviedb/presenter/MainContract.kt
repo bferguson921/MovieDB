@@ -18,6 +18,6 @@ interface MainContract {
         fun displayMovies(movies: List<Result>)
         fun getImages(images: Images)
         fun getGenres(genres: List<Genre>)
-        fun getSearchedMovie(movies: List<Result>)
+        fun displaySearch(movies: List<Result>)
     }
 }
