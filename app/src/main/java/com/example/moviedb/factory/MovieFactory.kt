@@ -1,12 +1,18 @@
 package com.example.moviedb.factory
 
+import android.app.Application
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.example.moviedb.model.*
 import com.example.moviedb.util.Logger
+import okhttp3.Cache
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MovieFactory {
+class MovieFactory(private val okHttpClient: OkHttpClient) {
     private val movieService: MovieService
 
     private val BASE_URL = "https://api.themoviedb.org/3/"
@@ -20,6 +26,7 @@ class MovieFactory {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .addConverterFactory(GsonConverterFactory.create())
+            .client(okHttpClient)
             .build()
     }
 
@@ -46,5 +53,15 @@ class MovieFactory {
     fun searchMovie(movie: String) : Call<SearchResponse> {
         Logger.debug("movie search")
         return movieService.searchForMovie(API_KEY, movie)
+    }
+
+
+    fun hasNetwork(context: Context): Boolean? {
+        var isConnected: Boolean? = false // Initial Value
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val activeNetwork: NetworkInfo? = connectivityManager.activeNetworkInfo
+        if (activeNetwork != null && activeNetwork.isConnected)
+            isConnected = true
+        return isConnected
     }
 }

@@ -1,13 +1,15 @@
 package com.example.moviedb.presenter
 
+import android.content.Context
 import com.example.moviedb.factory.MovieFactory
 import com.example.moviedb.model.MovieResponse
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class DetailPresenter(private val view: DetailContract.View) : DetailContract.Presenter {
-    private val movieFactory = MovieFactory()
+class DetailPresenter(private val view: DetailContract.View, private val okHttpClient: OkHttpClient) : DetailContract.Presenter {
+    private val movieFactory = MovieFactory(okHttpClient)
 
     override fun getDetails(movieId: Int) {
         movieFactory.getDetails(movieId).enqueue(object : Callback<MovieResponse> {
