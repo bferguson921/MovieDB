@@ -2,6 +2,7 @@ package com.example.moviedb.presenter
 
 import com.example.moviedb.factory.MovieFactory
 import com.example.moviedb.model.ConfigurationResponse
+import com.example.moviedb.model.Genre
 import com.example.moviedb.model.GenreResponse
 import com.example.moviedb.model.PopularResponse
 import com.example.moviedb.util.Logger
@@ -64,6 +65,24 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
             }
 
         })
+    }
+
+    override fun getGenres(): List<Genre> {
+        lateinit var genres : List<Genre>
+
+        movieFactory.getGenres().enqueue(object : Callback<GenreResponse> {
+            override fun onFailure(call: Call<GenreResponse>, t: Throwable) {
+                Logger.error(t)
+            }
+
+            override fun onResponse(call: Call<GenreResponse>, response: Response<GenreResponse>) {
+                response.body()?.let {
+                    genres = it.genres
+                }
+            }
+        })
+
+        return genres
     }
 
 }
