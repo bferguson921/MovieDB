@@ -36,7 +36,6 @@ class MovieAdapter(private val movies: List<Result>,
         val popularityScore: TextView = view.findViewById(R.id.popularityScoreView)
         val releaseYear: TextView = view.findViewById(R.id.releaseYearView)
         val movieItem: ConstraintLayout = view.findViewById(R.id.movieItem)
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): CustomViewHolder {
