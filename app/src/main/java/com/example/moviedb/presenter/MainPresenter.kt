@@ -1,15 +1,20 @@
 package com.example.moviedb.presenter
 
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkInfo
 import com.example.moviedb.factory.MovieFactory
 import com.example.moviedb.model.*
 import com.example.moviedb.util.Logger
+import okhttp3.Cache
+import okhttp3.OkHttpClient
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 
-class MainPresenter(private val view: MainContract.View) : MainContract.Presenter {
+class MainPresenter(private val view: MainContract.View, private val okHttpClient: OkHttpClient) : MainContract.Presenter {
 
-    private val movieFactory = MovieFactory()
+    private val movieFactory = MovieFactory(okHttpClient)
 
     override fun getPopularMovies(page: Int) {
 
@@ -83,5 +88,7 @@ class MainPresenter(private val view: MainContract.View) : MainContract.Presente
 
         })
     }
+
+
 
 }
