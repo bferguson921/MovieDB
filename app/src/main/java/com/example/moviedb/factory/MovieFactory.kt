@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.net.ConnectivityManager
 import android.net.NetworkInfo
+import com.example.moviedb.BuildConfig
 import com.example.moviedb.model.*
 import com.example.moviedb.util.Logger
 import okhttp3.Cache
@@ -16,7 +17,7 @@ class MovieFactory(private val okHttpClient: OkHttpClient) {
     private val movieService: MovieService
 
     private val BASE_URL = "https://api.themoviedb.org/3/"
-    private val API_KEY = "ef141c7b48a3291d3916eda5f1cfa9ad"
+    private val API_KEY = BuildConfig.CONSUMER_KEY
 
     init {
         movieService = createMovieService(getRetrofitInstance())
